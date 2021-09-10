@@ -16,10 +16,10 @@ public class WardController {
     } //Is there a list of wards ?
 
     // i.e localhost:8080/api/ward
-    @GetMapping("{wardName}")
-    public Patient getWardByName(@PathVariable("wardName") String wardName) {
+    @GetMapping("{wardId}")
+    public Ward getWardById(@PathVariable("wardId") String wardId) {
         /*
-            TODO: Find and return wardName in db if not present throw new WardNotFoundException("message - Ward not found");
+            TODO: Find and return wardID in db if not present throw new WardNotFoundException("message - Ward not found");
             Note that business logic should be in WardService
          */
         return (Ward) wardService.getWard();
@@ -29,19 +29,19 @@ public class WardController {
     @PostMapping
     public void addWard(@RequestBody Ward ward) {
         System.out.println(ward);
-        wardService.addNewWard(ward); //Replace Patient Service
+        wardService.addNewWard(ward);
     }
 
-    // i.e DELETE localhost:8080/api/ward/blueward
-    @DeleteMapping("{wardName}")
-    public void deleteWard(@PathVariable("wardName") String wardName) {
+    // i.e DELETE localhost:8080/api/ward/12
+    @DeleteMapping("{wardId}")
+    public void deleteWard(@PathVariable("wardId") String wardId) {
         // TODO: Implement delete ward
-        wardService.deleteWard(wardName);
+        wardService.deleteWard(wardId);
     }
 
     //Updates ward name
     @PutMapping
-    public void updateWard(@RequestBody Ward ward) {
+    public void updateWard(@RequestBody Ward ward)  {
         wardService.updateWard(ward);
     }
 

@@ -23,4 +23,3 @@ public class WardService {
     public void updateWard(Ward ward) {
     }
 }
-//test to push

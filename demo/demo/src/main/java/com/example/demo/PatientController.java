@@ -23,7 +23,7 @@ public class PatientController {
     }
 
     // i.e localhost:8080/api/patient
-    @GetMapping("{movieName}")
+    @GetMapping("{patientName}")
     public Patient getPatientByName(@PathVariable("patientName") String patientName) {
         /*
             TODO: Find and return superHeroName in db if not present throw new PatientNotFoundException("message");
