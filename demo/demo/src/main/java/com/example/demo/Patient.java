@@ -5,16 +5,16 @@ public class Patient {
     private Long Id;
     private String firstName;
     private String lastName;
-    Enum SEX;
+    private SEX sex;
     private LocalDate dob;
     private Integer age;
-    Enum SMOKER;
+    private SMOKER smoker;
     private String illness;
     private Integer ward;
     private LocalDate dateAdmission;
     private LocalDate dateRelease;
-    Enum COVIDRISK;
-    Enum ASSESSMENTRISK;
+    private COVIDRISK covidrisk;
+    private ASSESSMENTRISK assessmentrisk;
 
 
     public Patient() {
@@ -24,27 +24,27 @@ public class Patient {
                    String lastName,
                    LocalDate dob,
                    Integer age,
-                   Enum SEX,
-                   Enum SMOKER,
+                   SEX sex,
+                   SMOKER smoker,
                    String illness,
                    Integer ward,
                    LocalDate dateAdmission,
                    LocalDate dateRelease,
-                   Enum COVIDRISK,
-                   Enum ASSESSMENTRISK
+                   COVIDRISK covidrisk,
+                   ASSESSMENTRISK assessmentrisk
                    ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.age = age;
-        this.SEX = SEX;
-        this.SMOKER = SMOKER;
+        this.sex = sex;
+        this.smoker = smoker;
         this.illness = illness;
         this.ward = ward;
         this.dateAdmission = dateAdmission;
         this.dateRelease = dateRelease;
-        this.COVIDRISK = COVIDRISK;
-        this.ASSESSMENTRISK = ASSESSMENTRISK;
+        this.covidrisk = covidrisk;
+        this.assessmentrisk = assessmentrisk;
         // enums do not work
     }
 
@@ -52,7 +52,6 @@ public class Patient {
     public Long getId() {
         return Id;
     }
-
 
     public void setId(Long id) {
         Id = id;
@@ -74,6 +73,14 @@ public class Patient {
         this.lastName = lastName;
     }
 
+    public SEX getSex() {
+        return sex;
+    }
+
+    public void setSex(SEX sex) {
+        this.sex = sex;
+    }
+
     public LocalDate getDob() {
         return dob;
     }
@@ -90,12 +97,12 @@ public class Patient {
         this.age = age;
     }
 
-    public Enum getSMOKER() {
-        return SMOKER;
+    public SMOKER getSmoker() {
+        return smoker;
     }
 
-    public void setSMOKER(Enum SMOKER) {
-        this.SMOKER = SMOKER;
+    public void setSmoker(SMOKER smoker) {
+        this.smoker = smoker;
     }
 
     public String getIllness() {
@@ -130,28 +137,20 @@ public class Patient {
         this.dateRelease = dateRelease;
     }
 
-    public Enum getCOVIDRISK() {
-        return COVIDRISK;
+    public COVIDRISK getCovidrisk() {
+        return covidrisk;
     }
 
-    public void setCOVIDRISK(Enum COVIDRISK) {
-        this.COVIDRISK = COVIDRISK;
+    public void setCovidrisk(COVIDRISK covidrisk) {
+        this.covidrisk = covidrisk;
     }
 
-    public Enum getASSESSMENTRISK() {
-        return ASSESSMENTRISK;
+    public ASSESSMENTRISK getAssessmentrisk() {
+        return assessmentrisk;
     }
 
-    public void setASSESSMENTRISK(Enum ASSESSMENTRISK) {
-        this.ASSESSMENTRISK = ASSESSMENTRISK;
-    }
-
-    public Enum getSEX() {
-        return SEX;
-    }
-
-    public void setSEX(Enum SEX) {
-        this.SEX = SEX;
+    public void setAssessmentrisk(ASSESSMENTRISK assessmentrisk) {
+        this.assessmentrisk = assessmentrisk;
     }
 
     @Override
