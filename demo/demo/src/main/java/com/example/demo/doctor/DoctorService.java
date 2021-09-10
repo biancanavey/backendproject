@@ -1,5 +1,6 @@
 package com.example.demo.doctor;
 
+import com.example.demo.exception.DoctorNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,24 +19,31 @@ public class DoctorService {
     }
 
     public void addNewDoctor(Doctor doctor) {
-        // TODO: add exceptions below
         if (doctorDataAccessService.selectAllDoctors().contains(doctor)) {
-            System.out.println("This movie already exists!");
+            throw new IllegalArgumentException("This doctor already exists in the database");
         } else {
             doctorDataAccessService.insertDoctor(doctor);
         }
     }
 
-    public void deleteDoctor(String firstName, String lastName) {
+    public Doctor getDoctor(Long doctorID) {
+        return doctorDataAccessService.selectAllDoctors()
+                .stream()
+                .filter(doctor -> doctor.getDoctorID().equals(doctorID))
+                .findFirst()
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor ID " + doctorID + " not found"));
+    }
+
+    public void deleteDoctor(Long doctorID) {
         boolean doctorExists = false;
         for (Doctor doctor : doctorDataAccessService.selectAllDoctors()) {
-            if (doctor.getFirstName().equals(firstName) && doctor.getLastName().equals(lastName)) {
+            if (doctor.getDoctorID().equals(doctorID)) {
                 doctorExists = true;
                 doctorDataAccessService.deleteDoctor(doctor);
             }
         }
         if (!doctorExists) {
-            System.out.println("This doctor does not exist in the database!");
+            throw new DoctorNotFoundException("Doctor ID " + doctorID + " not found");
         }
     }
 
@@ -48,7 +56,7 @@ public class DoctorService {
             }
         }
         if (!doctorExists) {
-            System.out.println("This doctor does not exist in the database!");
+            throw new DoctorNotFoundException("Doctor not found");
         }
     }
 }
