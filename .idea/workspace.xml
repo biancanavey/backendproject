@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db29beb7-cd22-48b9-91b8-39231a2b6a77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardDataAccessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/Ward.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/Ward/Ward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/Ward/WardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/Ward/WardDataAccessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/WardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo/src/main/java/com/example/demo/Ward/WardService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
