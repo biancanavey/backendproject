@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+
+@Service
 public class PatientService {
     public static List<Patient> getPatient() {
         return List.of(
