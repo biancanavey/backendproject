@@ -38,7 +38,7 @@ public class WardService {
                 }
             }
             if (!found) {
-                throw new WardNotFoundException(WardId + " not found");
+                throw new WardNotFoundException(wardId + " not found");
             }
         }
         }
@@ -48,9 +48,9 @@ public class WardService {
 
         boolean found = false;
         for (Ward w : WardDataAccessService.selectAllWards())) {
-                if(?.WardId().equals(ward.getId())) {// ? What to put in Q marks
+                if(w.wardId().equals(ward.getId())) {// ? What to put in Q marks
                 found = true;
-//                ?.setWard(ward.getWard());
+                w.setWard(ward.getWardid());
             }
         }
         if (!found) {
@@ -58,10 +58,10 @@ public class WardService {
         }
     }
 
-    public Ward getWard(int WardId) {
+    public Ward getWard(int wardId) {
         return WardDataAccessService.selectAllWard()
                 .stream()
-                .filter(ward -> ward.getWardId().equals(wardId))
+                .filter(ward -> ward.getwardId().equals(wardId))
                 .findFirst()
                 .orElseThrow(() -> new WardNotFoundException(wardId + " not found"));
 }

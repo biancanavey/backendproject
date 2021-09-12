@@ -14,11 +14,11 @@ public class Ward {
         this.wardName = wardName;
     }
 
-    public int getWardId() {
+    public int getwardId() {
         return wardId;
     }
 
-    public void setWardId(int wardId) {
+    public void setwardId(int wardId) {
         this.wardId = wardId;
     }
 
