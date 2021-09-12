@@ -50,7 +50,7 @@ public class WardService {
         for (Ward w : WardDataAccessService.selectAllWards())) {
                 if(w.wardId().equals(ward.getId())) {// ? What to put in Q marks
                 found = true;
-                w.setWard(ward.getWardid());
+                w.setWard(ward.getWard());
             }
         }
         if (!found) {
