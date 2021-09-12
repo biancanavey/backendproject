@@ -1,4 +1,4 @@
-com.example.demo;
+com.example.demo.Ward;
 
 
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/ward")
+@RequestMapping(path = "api/Ward")
 
 public class WardController {
     @GetMapping
