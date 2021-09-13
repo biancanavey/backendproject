@@ -20,7 +20,7 @@ public class DoctorController {
         return doctorService.getDoctors();
     }
 
-    @GetMapping
+    @GetMapping("{doctorID}")
     public Doctor getDoctorByID(@PathVariable("doctorID") Long doctorID) {
         return doctorService.getDoctor(doctorID);
     }

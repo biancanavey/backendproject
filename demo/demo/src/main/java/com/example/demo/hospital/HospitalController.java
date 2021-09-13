@@ -20,8 +20,8 @@ public class HospitalController {
         return hospitalService.getHospitals();
     }
 
-    @GetMapping
-    public Hospital getHospitalByID(@PathVariable("hopsitalID") Long hospitalID) {
+    @GetMapping("{hospitalID}")
+    public Hospital getHospitalByID(@PathVariable("hospitalID") Long hospitalID) {
         return hospitalService.getHospital(hospitalID);
     }
 
