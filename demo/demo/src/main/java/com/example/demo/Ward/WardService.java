@@ -1,6 +1,6 @@
 package com.example.demo.Ward;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.demo.Exception.WardNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -38,7 +38,7 @@ public class WardService {
                 }
             }
             if (!found) {
-                throw new WardNotFoundException(wardId + " not found");
+                throw new WardNotFoundException("Ward ID = " + wardId + " not found");
             }
         }
         }
@@ -48,13 +48,15 @@ public class WardService {
 
         boolean found = false;
         for (Ward w : WardDataAccessService.selectAllWards())) {
-                if(w.wardId().equals(ward.getId())) {// ? What to put in Q marks
+                if(w.wardId().equals(ward.getId())) {
                 found = true;
-                w.setWard(ward.getWard());
-            }
+                w.setwardName (ward.getwardName());
+                w.setwardId (ward.getwardId());
+
+                }
         }
         if (!found) {
-            throw new WardNotFoundException(ward.getId() + " not found");
+            throw new WardNotFoundException("Ward not found");
         }
     }
 
