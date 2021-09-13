@@ -29,7 +29,7 @@ public class HospitalService {
     public Hospital getHospital(Long hospitalID) {
         return hospitalDataAccessService.selectAllHospitals()
                 .stream()
-                .filter(doctor -> doctor.getHospitalID().equals(hospitalID))
+                .filter(hospital -> hospital.getHospitalID().equals(hospitalID))
                 .findFirst()
                 .orElseThrow(() -> new HospitalNotFoundException("Hospital ID " + hospitalID + " not found"));
     }
