@@ -50,9 +50,11 @@ public class DoctorService {
     public void updateDoctor(Doctor doctor) {
         boolean doctorExists = false;
         for (Doctor doctorInDB : doctorDataAccessService.selectAllDoctors()) {
-            if (doctorInDB.getFirstName().equals(doctor.getFirstName()) && doctorInDB.getFirstName().equals(doctor.getFirstName())) {
+            if (doctorInDB.getDoctorID().equals(doctor.getDoctorID())) {
                 doctorExists = true;
                 doctorInDB.setSpeciality(doctor.getSpeciality());
+                doctorInDB.setFirstName(doctor.getFirstName());
+                doctorInDB.setLastName(doctor.getLastName());
             }
         }
         if (!doctorExists) {
