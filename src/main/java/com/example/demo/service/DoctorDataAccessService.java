@@ -32,47 +32,30 @@ import java.util.ArrayList;
         public void deletePatient(Doctor doctor) {
 
         }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Using an Array List
     // public class DoctorDataAccessService {
 
-    //  private static List<Doctor> doctorDatabase;
+      private static List<Doctor> doctorDatabase;
 
-//   public DoctorDataAccessService() {
-//       Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology");
+   public DoctorDataAccessService() {
+       Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology");
 
-//       doctorDatabase = new ArrayList<>();
-//       doctorDatabase.add(bobSmith);
-    //     }
+   doctorDatabase = new ArrayList<>();
+    doctorDatabase.add(bobSmith);
+       }
 
-//     public List<Doctor> selectAllDoctors() {
-//     return doctorDatabase;
-//     }
+   public List<Doctor> selectAllDoctors() {
+   return doctorDatabase;
+   }
 
-                    //     public void insertDoctor(Doctor doctor) {
-                    //     doctorDatabase.add(doctor);
-//  }
 
-                    //  public void deleteDoctor(Doctor doctor) {
-                    //      doctorDatabase.remove(doctor);
-                    //  }
-//  }
+                         public void insertDoctor(Doctor doctor) {
+                         doctorDatabase.add(doctor);
+  }
+
+                      public void deleteDoctor(Doctor doctor) {
+                        doctorDatabase.remove(doctor);
+                      }
+}
 
