@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 
-public class WardDataAccessService  {
+public class WardDataAccessService {
 
     public static List<Ward> selectAllWardsWards;
     private JdbcTemplate jdbcTemplate;
@@ -35,39 +35,38 @@ public class WardDataAccessService  {
     public void deletePatient(Ward ward) {
 
     }
+
+
+
+
+//Using an Array List
+     private Ward ward;
+
+    public WardDataAccessService(Ward ward) {
+        this.ward = ward;
+    }
+
+     private static List<Ward> Warddb;
+
+    public WardDataAccessService() {
+       Ward oncologyward = new Ward (1, "Oncology");
+       Warddb = new ArrayList<>();
+       Warddb.add(oncologyward);
+    }
+
+        public List<Ward> selectAllWards() {
+            return Warddb;
+        }
+
+        public void insertWard(Ward ward) {
+           Warddb.add(ward);
+       }
+
+        public void deleteWard(Ward ward) {
+           Warddb.remove(ward);
+      }
 }
 
 
-
-
-// Using an Array List
-//public class WardDataAccessService {
-
-    // private Ward ward;
-
-    //public WardDataAccessService(Ward ward) {
-    //    this.ward = ward;
-    //}
-
-    // private static List<Ward> Warddb;
-    //   private JdbcTemplate jdbcTemplate;
-
-    //public WardDataAccessService() {
-    //   Ward oncologyward = new Ward (1, "Oncology");
-    //   Warddb = new ArrayList<>();
-    //   Warddb.add(oncologyward);
-    //}
-
-    //    public List<Ward> selectAllWards() {
-    //        return Warddb;
-    //    }
-
-    //    public void insertWard(Ward ward) {
-    //        Warddb.add(ward);
-    //   }
-
-    //    public void deleteWard(Ward ward) {
-    //        Warddb.remove(ward);
-    //   }
 
 
