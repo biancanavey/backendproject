@@ -20,7 +20,7 @@ import java.util.List;
 
         public int insertPatient(Patient patient) {
             String insertSql = """
-        INSERT INTO Patient(movie_name, release_date) VALUES(?, ?)
+        INSERT INTO Patient(insert Sql, Id, FirstName,tLastName, patient.getDob,patient.getAge,patient.getSEX,SMOKER,Illness,Ward,DateAdmission,DateRelease,COVIDRISK,ASSESSMENTRISK) VALUES(?, ?)
         """;
             int result = jdbcTemplate.update(insertSql, patient.getId(), patient.getFirstName(),patient.getLastName(), patient.getDob(),patient.getAge(),patient.getSEX(),patient.getSMOKER(),patient.getIllness(),patient.getWard(),patient.getDateAdmission(),patient.getDateRelease(),patient.getCOVIDRISK(),patient.getASSESSMENTRISK());
             return result;

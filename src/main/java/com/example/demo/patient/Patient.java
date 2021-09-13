@@ -5,16 +5,16 @@ public class Patient {
     private Long Id;
     private String firstName;
     private String lastName;
-    Enum SEX;
+    private SEX SEX;
     private LocalDate dob;
     private Integer age;
-    Enum SMOKER;
+    private SMOKER SMOKER;
     private String illness;
     private Integer ward;
     private LocalDate dateAdmission;
     private LocalDate dateRelease;
-    Enum COVIDRISK;
-    Enum ASSESSMENTRISK;
+    private COVIDRISK COVIDRISK;
+    private ASSESSMENTRISK ASSESSMENTRISK;
 
 
     public Patient() {
@@ -24,14 +24,14 @@ public class Patient {
                    String lastName,
                    LocalDate dob,
                    Integer age,
-                   Enum SEX,
-                   Enum SMOKER,
+                   SEX SEX,
+                   SMOKER SMOKER,
                    String illness,
                    Integer ward,
                    LocalDate dateAdmission,
                    LocalDate dateRelease,
-                   Enum COVIDRISK,
-                   Enum ASSESSMENTRISK
+                   COVIDRISK COVIDRISK,
+                   ASSESSMENTRISK ASSESSMENTRISK
                    ) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,11 +90,11 @@ public class Patient {
         this.age = age;
     }
 
-    public Enum getSMOKER() {
+    public SMOKER getSMOKER() {
         return SMOKER;
     }
 
-    public void setSMOKER(Enum SMOKER) {
+    public void setSMOKER(SMOKER SMOKER) {
         this.SMOKER = SMOKER;
     }
 
@@ -130,27 +130,27 @@ public class Patient {
         this.dateRelease = dateRelease;
     }
 
-    public Enum getCOVIDRISK() {
+    public COVIDRISK getCOVIDRISK() {
         return COVIDRISK;
     }
 
-    public void setCOVIDRISK(Enum COVIDRISK) {
+    public void setCOVIDRISK(COVIDRISK COVIDRISK) {
         this.COVIDRISK = COVIDRISK;
     }
 
-    public Enum getASSESSMENTRISK() {
+    public ASSESSMENTRISK getASSESSMENTRISK() {
         return ASSESSMENTRISK;
     }
 
-    public void setASSESSMENTRISK(Enum ASSESSMENTRISK) {
+    public void setASSESSMENTRISK(ASSESSMENTRISK ASSESSMENTRISK) {
         this.ASSESSMENTRISK = ASSESSMENTRISK;
     }
 
-    public Enum getSEX() {
+    public SEX getSEX() {
         return SEX;
     }
 
-    public void setSEX(Enum SEX) {
+    public void setSEX(SEX SEX) {
         this.SEX = SEX;
     }
 
@@ -158,12 +158,20 @@ public class Patient {
     public String toString() {
         return "Patient{" +
                 "Id=" + Id +
-                ", Name='" + firstName +lastName + '\'' +
-                ", DOB=" + dob +
-                ", Age=" + age +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", SEX=" + SEX +
+                ", dob=" + dob +
+                ", age=" + age +
+                ", SMOKER=" + SMOKER +
+                ", illness='" + illness + '\'' +
+                ", ward=" + ward +
+                ", dateAdmission=" + dateAdmission +
+                ", dateRelease=" + dateRelease +
+                ", COVIDRISK=" + COVIDRISK +
+                ", ASSESSMENTRISK=" + ASSESSMENTRISK +
                 '}';
     }
-
 
 }
 
