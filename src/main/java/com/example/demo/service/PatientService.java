@@ -66,6 +66,13 @@ public class PatientService  {
         for (Patient p : patients) {
             if (p.getId().equals(patient.getId())) {
                 found = true;
+                p.setFirstName(patient.getFirstName());
+                p.setLastName(patient.getLastName());
+                p.setAge(patient.getAge());
+                p.setDob(patient.getDob());
+                p.setSEX(patient.getSEX());
+                p.setIllness(patient.getIllness());
+                p.setSMOKER(patient.getSMOKER());
                 p.setWard(patient.getWard());
                 p.setDateAdmission(patient.getDateAdmission());
                 p.setDateRelease(patient.getDateRelease());

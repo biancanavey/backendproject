@@ -1,0 +1,17 @@
+Bicomaas Health - Backend Project
+
+What it contains:
+Controllers- API
+Service - Database and Logic
+Exceptions - Used for Errors
+Other packages have information that is specific to the class. E.g Patient only has information that is unique.
+
+The project uses an API that is connected directly to PostgresSQL Database.
+Use GetMapping to retrieve information.
+Use PostMapping to Add new information.
+Use PutMapping to Update new information.
+Use DeleteMapping to Delete new data entries.
+
+For the purpose of testing this project - use Postman.
+
+Ideally the front-end to this project would use type of forms to input, update or delete new data about patients,doctors and wards.

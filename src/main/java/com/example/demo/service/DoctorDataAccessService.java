@@ -17,45 +17,46 @@ import java.util.ArrayList;
             this.jdbcTemplate = jdbcTemplate;
         }
 
-        public static List<Doctor> getSelectAllDoctorsDoctors() {
+        public static List<Doctor> selectAllDoctors() {
             return null;
         }
 
-        public int insertPatient(Doctor doctor) {
+        public int insertDoctor(Doctor doctor) {
             String insertSql = """
-        INSERT INTO Patient(Doctor Id, First Name, Last Name, Speciality) VALUES(?, ?)
+        INSERT INTO Doctor(Doctor Id, First Name, Last Name, Speciality) VALUES(?, ?)
         """;
             int result = jdbcTemplate.update(insertSql,doctor.getDoctorID(),doctor.getFirstName(),doctor.getLastName(), doctor.getSpeciality());
             return result;
         }
 
-        public void deletePatient(Doctor doctor) {
+        public void deleteDoctor(Doctor doctor) {
 
         }
+    }
 
 // Using an Array List
     // public class DoctorDataAccessService {
 
-      private static List<Doctor> doctorDatabase;
-
-   public DoctorDataAccessService() {
-       Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology");
-
-   doctorDatabase = new ArrayList<>();
-    doctorDatabase.add(bobSmith);
-       }
-
-   public List<Doctor> selectAllDoctors() {
-   return doctorDatabase;
-   }
-
-
-                         public void insertDoctor(Doctor doctor) {
-                         doctorDatabase.add(doctor);
-  }
-
-                      public void deleteDoctor(Doctor doctor) {
-                        doctorDatabase.remove(doctor);
-                      }
-}
+//      private static List<Doctor> doctorDatabase;
+//
+//   public DoctorDataAccessService() {
+//       Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology");
+//
+//   doctorDatabase = new ArrayList<>();
+//    doctorDatabase.add(bobSmith);
+//       }
+//
+//   public List<Doctor> selectAllDoctors() {
+//   return doctorDatabase;
+//   }
+//
+//
+//                         public void insertDoctor(Doctor doctor) {
+//                         doctorDatabase.add(doctor);
+//  }
+//
+//                      public void deleteDoctor(Doctor doctor) {
+//                        doctorDatabase.remove(doctor);
+//                      }
+//}
 
