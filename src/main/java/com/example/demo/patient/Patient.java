@@ -45,7 +45,7 @@ public class Patient {
         this.dateRelease = dateRelease;
         this.COVIDRISK = COVIDRISK;
         this.ASSESSMENTRISK = ASSESSMENTRISK;
-        // enums do not work
+
     }
 
 
