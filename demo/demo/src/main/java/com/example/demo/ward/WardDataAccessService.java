@@ -11,7 +11,7 @@ public class WardDataAccessService {
     private static List<Ward> Warddb;
 
     public WardDataAccessService() {
-        Ward oncologyWard = new Ward (1, "Oncology");
+        Ward oncologyWard = new Ward (1, "Oncology", 1L);
         Warddb = new ArrayList<>();
         Warddb.add(oncologyWard);
     }

@@ -6,12 +6,18 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String speciality;
+    private Long hospital;
 
-    public Doctor(Long doctorID, String firstName, String lastName, String speciality) {
+    public Doctor() {
+
+    }
+
+    public Doctor(Long doctorID, String firstName, String lastName, String speciality, Long hospital) {
         this.doctorID = doctorID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.speciality = speciality;
+        this.hospital = hospital;
     }
 
     public Long getDoctorID() {
@@ -46,6 +52,14 @@ public class Doctor {
         this.speciality = speciality;
     }
 
+    public Long getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Long hospital) {
+        this.hospital = hospital;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +
@@ -53,6 +67,7 @@ public class Doctor {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", speciality='" + speciality + '\'' +
+                ", hospital=" + hospital +
                 '}';
     }
 }

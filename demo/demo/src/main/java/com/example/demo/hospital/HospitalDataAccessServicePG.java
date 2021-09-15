@@ -24,7 +24,7 @@ public class HospitalDataAccessServicePG {
 
     public int insertHospital(Hospital hospital) {
         String insertSql = """
-        INSERT INTO hospital(hospital_id, hospital_name, street, city, state, country, postal_code) VALUES(?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO hospital(hospitalID, hospitalName, street, city, state, country, postalCode) VALUES(?, ?, ?, ?, ?, ?, ?)
         """;
         int result = jdbcTemplate.update(insertSql, hospital.getHospitalID(), hospital.getHospitalName(), hospital.getStreet(), hospital.getCity(), hospital.getState(), hospital.getCountry(), hospital.getPostalCode());
         return result;
@@ -32,7 +32,7 @@ public class HospitalDataAccessServicePG {
 
     public void deleteHospital(Hospital hospital) {
         String deleteSql = """
-                DELETE FROM hospital WHERE hospital_id = ?
+                DELETE FROM hospital WHERE hospitalID = ?
                 """;
         jdbcTemplate.update(deleteSql, hospital.getHospitalID());
     }

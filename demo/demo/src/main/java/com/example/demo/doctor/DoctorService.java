@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public class DoctorService {
 
-    private DoctorDataAccessService doctorDataAccessService;
+    private DoctorDataAccessServicePG doctorDataAccessService;
 
-    public DoctorService(DoctorDataAccessService doctorDataAccessService) {
+    public DoctorService(DoctorDataAccessServicePG doctorDataAccessService) {
         this.doctorDataAccessService = doctorDataAccessService;
     }
 
@@ -19,10 +19,9 @@ public class DoctorService {
     }
 
     public void addNewDoctor(Doctor doctor) {
-        if (doctorDataAccessService.selectAllDoctors().contains(doctor)) {
-            throw new IllegalArgumentException("This doctor already exists in the database");
-        } else {
-            doctorDataAccessService.insertDoctor(doctor);
+        int result = doctorDataAccessService.insertDoctor(doctor);
+        if (result != 1) {
+            throw new IllegalStateException("Error - please try again. Make sure all information entered is correct.");
         }
     }
 
@@ -55,6 +54,7 @@ public class DoctorService {
                 doctorInDB.setSpeciality(doctor.getSpeciality());
                 doctorInDB.setFirstName(doctor.getFirstName());
                 doctorInDB.setLastName(doctor.getLastName());
+                doctorInDB.setHospital(doctor.getHospital());
             }
         }
         if (!doctorExists) {

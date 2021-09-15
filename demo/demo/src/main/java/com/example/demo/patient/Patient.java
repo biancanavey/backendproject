@@ -16,8 +16,13 @@ public class Patient {
     private LocalDate dateRelease;
     private COVIDRISK covidrisk;
     private ASSESSMENTRISK assessmentrisk;
+    private Long doctor;
 
-    public Patient(Long id, String firstName, String lastName, SEX sex, LocalDate dob, Integer age, SMOKER smoker, String illness, Integer ward, LocalDate dateAdmission, LocalDate dateRelease, COVIDRISK covidrisk, ASSESSMENTRISK assessmentrisk) {
+    public Patient() {
+
+    }
+
+    public Patient(Long id, String firstName, String lastName, SEX sex, LocalDate dob, Integer age, SMOKER smoker, String illness, Integer ward, LocalDate dateAdmission, LocalDate dateRelease, COVIDRISK covidrisk, ASSESSMENTRISK assessmentrisk, Long doctor) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,6 +36,7 @@ public class Patient {
         this.dateRelease = dateRelease;
         this.covidrisk = covidrisk;
         this.assessmentrisk = assessmentrisk;
+        this.doctor = doctor;
     }
 
     public Long getId() {
@@ -137,10 +143,18 @@ public class Patient {
         this.assessmentrisk = assessmentrisk;
     }
 
+    public Long getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Long doctor) {
+        this.doctor = doctor;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
-                "Id=" + id +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
@@ -153,6 +167,7 @@ public class Patient {
                 ", dateRelease=" + dateRelease +
                 ", covidrisk=" + covidrisk +
                 ", assessmentrisk=" + assessmentrisk +
+                ", doctor=" + doctor +
                 '}';
     }
 }

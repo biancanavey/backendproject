@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public class WardService {
 
-    private WardDataAccessService wardDataAccessService;
+    private WardDataAccessServicePG wardDataAccessService;
 
-    public WardService(WardDataAccessService wardDataAccessService) {
+    public WardService(WardDataAccessServicePG wardDataAccessService) {
         this.wardDataAccessService = wardDataAccessService;
     }
 
@@ -19,10 +19,9 @@ public class WardService {
     }
 
     public void addNewWard(Ward ward) {
-        if (wardDataAccessService.selectAllWards().contains(ward)) {
-            throw new IllegalArgumentException("This ward already exists in the database");
-        } else {
-            wardDataAccessService.insertWard(ward);
+        int result = wardDataAccessService.insertWard(ward);
+        if (result != 1) {
+            throw new IllegalStateException("Error - please try again. Make sure all information entered is correct.");
         }
     }
 
@@ -53,6 +52,7 @@ public class WardService {
             if (wardInDB.getWardId() == (ward.getWardId())) {
                 wardExists = true;
                 wardInDB.setWardName(ward.getWardName());
+                wardInDB.setHospital(ward.getHospital());
             }
         }
         if (!wardExists) {

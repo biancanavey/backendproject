@@ -24,15 +24,15 @@ public class DoctorDataAccessServicePG {
 
     public int insertDoctor(Doctor doctor) {
         String insertSql = """
-        INSERT INTO doctor(doctor_id, first_name, last_name, speciality) VALUES(?, ?, ?, ?)
+        INSERT INTO doctor(doctorID, firstName, lastName, speciality, hospital) VALUES(?, ?, ?, ?, ?)
         """;
-        int result = jdbcTemplate.update(insertSql, doctor.getDoctorID(), doctor.getFirstName(), doctor.getLastName(), doctor.getSpeciality());
+        int result = jdbcTemplate.update(insertSql, doctor.getDoctorID(), doctor.getFirstName(), doctor.getLastName(), doctor.getSpeciality(), doctor.getHospital());
         return result;
     }
 
     public void deleteDoctor(Doctor doctor) {
         String deleteSql = """
-                DELETE FROM doctor WHERE doctor_id = ?
+                DELETE FROM doctor WHERE doctorID = ?
                 """;
         jdbcTemplate.update(deleteSql, doctor.getDoctorID());
     }

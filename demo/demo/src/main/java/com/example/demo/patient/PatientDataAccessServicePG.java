@@ -25,9 +25,9 @@ public class PatientDataAccessServicePG {
 
     public int insertPatient(Patient patient) {
         String insertSql = """
-        INSERT INTO patient(id, first_name, last_name, sex, dob, age, smoker, illness, ward, date_admission, date_release, covid_risk, assessment_risk) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO patient(id, firstName, lastName, sex, dob, age, smoker, illness, ward, dateAdmission, dateRelease, covidrisk, assessmentrisk, doctor) VALUES(?, ?, ?, CAST(? AS patientsex), ?, ?, CAST(? AS patientsmoker), ?, ?, ?, ?, CAST(? AS patientcovidrisk), CAST(? AS patientassessmentrisk), ?)
         """;
-        int result = jdbcTemplate.update(insertSql, patient.getId(), patient.getFirstName(), patient.getLastName(), patient.getSex(), patient.getDob(), patient.getAge(), patient.getSmoker(), patient.getIllness(), patient.getWard(), patient.getDateAdmission(), patient.getDateRelease(), patient.getCovidrisk(), patient.getAssessmentrisk());
+        int result = jdbcTemplate.update(insertSql, patient.getId(), patient.getFirstName(), patient.getLastName(), patient.getSex().toString(), patient.getDob(), patient.getAge(), patient.getSmoker().toString(), patient.getIllness(), patient.getWard(), patient.getDateAdmission(), patient.getDateRelease(), patient.getCovidrisk().toString(), patient.getAssessmentrisk().toString(), patient.getDoctor());
         return result;
     }
 

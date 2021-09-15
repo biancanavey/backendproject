@@ -15,7 +15,7 @@ public class PatientDataAccessService {
         LocalDate dob = LocalDate.of(1952, 7, 13);
         LocalDate dateAdmission = LocalDate.of(2021, 8, 17);
         LocalDate dateRelease = LocalDate.of(2021, 9, 12);
-        Patient susanJones = new Patient(1L, "Susan", "Jones", SEX.F, dob, 69, SMOKER.YES, "Cancer", 7, dateAdmission, dateRelease, COVIDRISK.High, ASSESSMENTRISK.High);
+        Patient susanJones = new Patient(1L, "Susan", "Jones", SEX.F, dob, 69, SMOKER.YES, "Cancer", 7, dateAdmission, dateRelease, COVIDRISK.High, ASSESSMENTRISK.High, 1L);
         patientDatabase = new ArrayList<>();
         patientDatabase.add(susanJones);
     }
@@ -24,7 +24,7 @@ public class PatientDataAccessService {
         return patientDatabase;
     }
 
-    public void insertNewPatient(Patient patient) {
+    public void insertPatient(Patient patient) {
         patientDatabase.add(patient);
     }
 

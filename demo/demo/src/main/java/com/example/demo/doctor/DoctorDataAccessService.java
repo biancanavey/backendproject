@@ -12,7 +12,7 @@ public class DoctorDataAccessService {
     private static List<Doctor> doctorDatabase;
 
     public DoctorDataAccessService() {
-        Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology");
+        Doctor bobSmith = new Doctor(1L, "Bob", "Smith", "Cardiology", 1L);
 
         doctorDatabase = new ArrayList<>();
         doctorDatabase.add(bobSmith);

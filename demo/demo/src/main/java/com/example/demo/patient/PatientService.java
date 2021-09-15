@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public class PatientService {
 
-    private PatientDataAccessService patientDataAccessService;
+    private PatientDataAccessServicePG patientDataAccessService;
 
-    public PatientService(PatientDataAccessService patientDataAccessService) {
+    public PatientService(PatientDataAccessServicePG patientDataAccessService) {
         this.patientDataAccessService = patientDataAccessService;
     }
 
@@ -19,10 +19,9 @@ public class PatientService {
     }
 
     public void addNewPatient(Patient patient) {
-        if (patientDataAccessService.selectAllPatients().contains(patient)) {
-            throw new IllegalArgumentException("This patient already exists in the database");
-        } else {
-            patientDataAccessService.insertNewPatient(patient);
+        int result = patientDataAccessService.insertPatient(patient);
+        if (result != 1) {
+            throw new IllegalStateException("Error - please try again. Make sure all information entered is correct.");
         }
     }
 
@@ -64,6 +63,7 @@ public class PatientService {
                 patientInDB.setDateRelease(patient.getDateRelease());
                 patientInDB.setCovidrisk(patient.getCovidrisk());
                 patientInDB.setAssessmentrisk(patient.getAssessmentrisk());
+                patientInDB.setDoctor(patient.getDoctor());
             }
         }
         if (!patientExists) {

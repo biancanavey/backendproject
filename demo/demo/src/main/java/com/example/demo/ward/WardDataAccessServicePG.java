@@ -26,15 +26,15 @@ public class WardDataAccessServicePG {
 
     public int insertWard(Ward ward) {
         String insertSql = """
-        INSERT INTO ward(ward_id, ward_name) VALUES(?, ?)
+        INSERT INTO ward(wardId, wardName, hospital) VALUES(?, ?, ?)
         """;
-        int result = jdbcTemplate.update(insertSql, ward.getWardId(), ward.getWardName());
+        int result = jdbcTemplate.update(insertSql, ward.getWardId(), ward.getWardName(), ward.getHospital());
         return result;
     }
 
     public void deleteWard(Ward ward) {
         String deleteSql = """
-                DELETE FROM ward WHERE ward_id = ?
+                DELETE FROM ward WHERE wardId = ?
                 """;
         jdbcTemplate.update(deleteSql, ward.getWardId());
     }

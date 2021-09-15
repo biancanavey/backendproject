@@ -27,12 +27,11 @@ public class PatientController {
 
 
     @PostMapping
-    public void addMovie(@RequestBody Patient patient) {
+    public void addPatient(@RequestBody Patient patient) {
         System.out.println(patient);
         patientService.addNewPatient(patient);
     }
 
-    // i.e DELETE localhost:8080/api/patient/james
     @DeleteMapping("{id}")
     public void deletePatient(@PathVariable("id") Long id) {
         patientService.deletePatient(id);

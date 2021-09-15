@@ -10,6 +10,10 @@ public class Hospital {
     private String country;
     private String postalCode;
 
+    public Hospital() {
+
+    }
+
     public Hospital(Long hospitalID, String hospitalName, String street, String city, String state, String country, String postalCode) {
         this.hospitalID = hospitalID;
         this.hospitalName = hospitalName;
@@ -88,4 +92,6 @@ public class Hospital {
                 ", postalCode='" + postalCode + '\'' +
                 '}';
     }
+
+
 }

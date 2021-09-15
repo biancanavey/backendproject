@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public class HospitalService {
 
-    private HospitalDataAccessService hospitalDataAccessService;
+    private HospitalDataAccessServicePG hospitalDataAccessService;
 
-    public HospitalService(HospitalDataAccessService hospitalDataAccessService) {
+    public HospitalService(HospitalDataAccessServicePG hospitalDataAccessService) {
         this.hospitalDataAccessService = hospitalDataAccessService;
     }
 
@@ -19,10 +19,9 @@ public class HospitalService {
     }
 
     public void addNewHospital(Hospital hospital) {
-        if (hospitalDataAccessService.selectAllHospitals().contains(hospital)) {
-            throw new IllegalArgumentException("This hospital already exists in the database");
-        } else {
-            hospitalDataAccessService.insertHospital(hospital);
+        int result = hospitalDataAccessService.insertHospital(hospital);
+        if (result != 1) {
+            throw new IllegalStateException("Error - please try again. Make sure all information entered is correct.");
         }
     }
 
