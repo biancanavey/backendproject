@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Repository
-public class DoctorDataAccessService {
+public class DoctorDataAccessService implements DoctorDAO {
 
     private static List<Doctor> doctorDatabase;
 
@@ -22,8 +22,13 @@ public class DoctorDataAccessService {
         return doctorDatabase;
     }
 
-    public void insertDoctor(Doctor doctor) {
-        doctorDatabase.add(doctor);
+    public int insertDoctor(Doctor doctor) {
+        if (doctorDatabase.contains(doctor)) {
+            return 0;
+        } else {
+            doctorDatabase.add(doctor);
+            return 1;
+        }
     }
 
     public void deleteDoctor(Doctor doctor) {

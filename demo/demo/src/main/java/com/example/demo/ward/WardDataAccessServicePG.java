@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 
-public class WardDataAccessServicePG {
+public class WardDataAccessServicePG implements WardDAO {
 
     private JdbcTemplate jdbcTemplate;
 

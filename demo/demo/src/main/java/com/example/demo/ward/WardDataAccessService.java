@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Repository
-public class WardDataAccessService {
+public class WardDataAccessService implements WardDAO {
 
     private static List<Ward> Warddb;
 
@@ -20,8 +20,13 @@ public class WardDataAccessService {
         return Warddb;
     }
 
-    public void insertWard(Ward ward) {
-        Warddb.add(ward);
+    public int insertWard(Ward ward) {
+        if (Warddb.contains(ward)) {
+            return 0;
+        } else {
+            Warddb.add(ward);
+            return 1;
+        }
     }
 
     public void deleteWard(Ward ward) {

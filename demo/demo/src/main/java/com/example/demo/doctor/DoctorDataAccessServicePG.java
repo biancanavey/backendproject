@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @Repository
-public class DoctorDataAccessServicePG {
+public class DoctorDataAccessServicePG implements DoctorDAO {
 
     private JdbcTemplate jdbcTemplate;
 

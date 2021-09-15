@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 
-public class PatientDataAccessServicePG {
+public class PatientDataAccessServicePG implements PatientDAO {
 
     private JdbcTemplate jdbcTemplate;
 

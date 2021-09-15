@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 @Repository
-public class PatientDataAccessService {
+public class PatientDataAccessService implements PatientDAO {
 
     private static List<Patient> patientDatabase;
 
@@ -24,8 +24,13 @@ public class PatientDataAccessService {
         return patientDatabase;
     }
 
-    public void insertPatient(Patient patient) {
-        patientDatabase.add(patient);
+    public int insertPatient(Patient patient) {
+        if (patientDatabase.contains(patient)) {
+            return 0;
+        } else {
+            patientDatabase.add(patient);
+            return 1;
+        }
     }
 
     public void deletePatient(Patient patient) {
