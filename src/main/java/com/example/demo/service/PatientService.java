@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientService  {
 
-//    private PatientDataAccessService patientDataAccessService;
+
     private PatientDataAccessServicePostgres patientDataAccessServicePostgres;
     private Object Patient;
 

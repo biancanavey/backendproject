@@ -20,7 +20,9 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String firstName,
+    public Patient(
+                    Long Id,
+                    String firstName,
                    String lastName,
                    LocalDate dob,
                    Integer age,
@@ -33,6 +35,7 @@ public class Patient {
                    COVIDRISK COVIDRISK,
                    ASSESSMENTRISK ASSESSMENTRISK
                    ) {
+        this.Id = Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
