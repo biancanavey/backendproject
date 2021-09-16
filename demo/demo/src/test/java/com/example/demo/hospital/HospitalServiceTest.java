@@ -1,8 +1,5 @@
 package com.example.demo.hospital;
 
-import com.example.demo.doctor.Doctor;
-import com.example.demo.patient.*;
-import com.example.demo.ward.Ward;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

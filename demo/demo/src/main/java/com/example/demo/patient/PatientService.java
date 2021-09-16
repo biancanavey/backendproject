@@ -25,6 +25,9 @@ public class PatientService {
     }
 
     public void addNewPatient(Patient patient) {
+        if (patient.getDateRelease().isBefore(patient.getDateAdmission()) || patient.getDateAdmission().isBefore(patient.getDob())) {
+            throw new IllegalStateException("Dates are not possible");
+        }
         int result = patientDataAccessService.insertPatient(patient);
         if (result != 1) {
             throw new IllegalStateException("Error - please try again. Make sure all information entered is correct.");
@@ -50,6 +53,9 @@ public class PatientService {
     }
 
     public int updatePatient(Patient patient) {
+        if (patient.getDateRelease().isBefore(patient.getDateAdmission()) || patient.getDateAdmission().isBefore(patient.getDob())) {
+            throw new IllegalStateException("Dates are not possible");
+        }
         for (Patient patientInDB : patientDataAccessService.selectAllPatients()) {
             if (patientInDB.getId().equals(patient.getId())) {
                 patientDataAccessService.deletePatient(patientInDB);

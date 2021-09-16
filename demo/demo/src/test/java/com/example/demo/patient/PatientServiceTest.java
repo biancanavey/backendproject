@@ -1,9 +1,5 @@
 package com.example.demo.patient;
 
-import com.example.demo.doctor.DoctorDataAccessService;
-import com.example.demo.doctor.DoctorDataAccessServicePG;
-import com.example.demo.ward.Ward;
-import com.example.demo.ward.WardDataAccessServicePG;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -49,7 +45,7 @@ public class PatientServiceTest {
     @Test
     void canAddPatient() {
 
-        Patient patient = new Patient(1L, "Isabella","Smith", SEX.F, LocalDate.of(1980, 4, 20),41, SMOKER.NO,"Lung Disease",2, LocalDate.of(2020, 3, 30),LocalDate.of(2020, 5, 30), COVIDRISK.High, ASSESSMENTRISK.High, 1L);
+        Patient patient = new Patient(1L, "Isabella","Smith", SEX.F, LocalDate.of(1980, 4, 20),41, SMOKER.NO,"Lung Disease",2, LocalDate.of(2020, 3, 30), LocalDate.of(2020, 5, 30), COVIDRISK.High, ASSESSMENTRISK.High, 1L);
 
         Mockito.when(patientDataAccessServicePG.insertPatient(Mockito.any(Patient.class)))
                 .thenReturn(1);
@@ -64,6 +60,16 @@ public class PatientServiceTest {
         assertThat(newPatient.getFirstName()).isEqualTo("Isabella");
         assertThat(newPatient.getLastName()).isEqualTo("Smith");
         assertThat(newPatient.getSex()).isEqualTo(SEX.F);
+        assertThat(newPatient.getDob()).isEqualTo(LocalDate.of(1980, 4, 20));
+        assertThat(newPatient.getAge()).isEqualTo(41);
+        assertThat(newPatient.getSmoker()).isEqualTo(SMOKER.NO);
+        assertThat(newPatient.getIllness()).isEqualTo("Lung Disease");
+        assertThat(newPatient.getWard()).isEqualTo(2);
+        assertThat(newPatient.getDateAdmission()).isEqualTo(LocalDate.of(2020, 3, 30));
+        assertThat(newPatient.getDateRelease()).isEqualTo(LocalDate.of(2020, 5, 30));
+        assertThat(newPatient.getCovidrisk()).isEqualTo(COVIDRISK.High);
+        assertThat(newPatient.getAssessmentrisk()).isEqualTo(ASSESSMENTRISK.High);
+        assertThat(newPatient.getDoctor()).isEqualTo(1L);
     }
 
     @Test
