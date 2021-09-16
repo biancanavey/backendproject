@@ -7,8 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,17 +16,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class WardServiceTest {
 
     @Mock
-    private WardDataAccessServicePG wdaspg;
+    private WardDataAccessServicePG wardDataAccessServicePG;
     private WardService underTest;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        underTest = new WardService(wdaspg);
+        underTest = new WardService(wardDataAccessServicePG);
     }
 
     @Test
-    void addNewWard() {
+    void canAddNewWard() {
 
         int wardId = 5;
         String wardName = "Oncology";
@@ -35,13 +34,13 @@ public class WardServiceTest {
 
         Ward ward = new Ward(wardId, wardName, hospital);
 
-        Mockito.when(wdaspg.insertWard(Mockito.any(Ward.class)))
+        Mockito.when(wardDataAccessServicePG.insertWard(Mockito.any(Ward.class)))
                 .thenReturn(1);
 
         underTest.addNewWard(ward);
 
         ArgumentCaptor<Ward> wardArgumentCaptor = ArgumentCaptor.forClass(Ward.class);
-        Mockito.verify(wdaspg).insertWard(wardArgumentCaptor.capture());
+        Mockito.verify(wardDataAccessServicePG).insertWard(wardArgumentCaptor.capture());
 
         Ward newWard = wardArgumentCaptor.getValue();
         assertThat(newWard.getWardId()).isEqualTo(5);
@@ -49,5 +48,73 @@ public class WardServiceTest {
         assertThat(newWard.getHospital()).isEqualTo(1L);
     }
 
+    @Test
+    void canGetWards() {
+        // Given
+        List<Ward> wards = List.of(
+                new Ward(1, "Hospital 1", 1L),
+                new Ward(2, "Hospital 2", 1L));
 
+        Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
+
+        // When
+        List<Ward> allWards = underTest.getWards();
+
+        // Then
+        assertThat(allWards).isEqualTo(wards);
+
+    }
+
+    @Test
+    void canGetWard() {
+
+        Ward ward1 = new Ward(1, "Hospital 1", 1L);
+        Ward ward2 = new Ward(2, "Hospital 2", 1L);
+
+        List<Ward> wards = List.of(
+                ward1, ward2);
+
+        Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
+
+        Ward chosenWard = underTest.getWard(1);
+
+        assertThat(chosenWard).isEqualTo(ward1);
+    }
+
+    @Test
+    void canDeleteWard() {
+
+        Ward ward1 = new Ward(1, "Hospital 1", 1L);
+        Ward ward2 = new Ward(2, "Hospital 2", 1L);
+
+        List<Ward> wards = new ArrayList<>();
+        wards.add(ward1);
+        wards.add(ward2);
+
+        Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
+        Mockito.doAnswer((i) -> {
+            wards.remove(ward1);
+            return null;
+        }).when(wardDataAccessServicePG).deleteWard(ward1);
+
+        underTest.deleteWard(1);
+
+        assertThat(wards).doesNotContain(ward1);
+    }
+
+    @Test
+    void canUpdateWard() {
+        Ward ward1 = new Ward(1, "Hospital 1", 1L);
+        Ward ward2 = new Ward(1, "Hospital 2", 2L);
+
+        List<Ward> wards = List.of(
+                ward1);
+
+        Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
+
+        underTest.updateWard(ward2);
+
+        assertThat(ward1.getWardName()).isEqualTo("Hospital 2");
+        assertThat(ward1.getHospital()).isEqualTo(2L);
+    }
 }
