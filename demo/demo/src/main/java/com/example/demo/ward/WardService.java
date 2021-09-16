@@ -33,31 +33,25 @@ public class WardService {
                 .orElseThrow(() -> new WardNotFoundException("Ward ID " + wardId + " not found"));
     }
 
-    public void deleteWard(int wardId) {
-        boolean wardExists = false;
+    public int deleteWard(int wardId) {
         for (Ward ward : wardDataAccessService.selectAllWards()) {
             if (ward.getWardId() == (wardId)) {
-                wardExists = true;
                 wardDataAccessService.deleteWard(ward);
+                return 1;
             }
         }
-        if (!wardExists) {
-            throw new WardNotFoundException("Ward ID " + wardId + " not found");
-        }
+        throw new WardNotFoundException("Ward ID " + wardId + " not found");
     }
 
-    public void updateWard(Ward ward) {
-        boolean wardExists = false;
+    public int updateWard(Ward ward) {
         for (Ward wardInDB : wardDataAccessService.selectAllWards()) {
             if (wardInDB.getWardId() == (ward.getWardId())) {
-                wardExists = true;
-                wardInDB.setWardName(ward.getWardName());
-                wardInDB.setHospital(ward.getHospital());
+                wardDataAccessService.deleteWard(wardInDB);
+                wardDataAccessService.insertWard(ward);
+                return 1;
             }
         }
-        if (!wardExists) {
-            throw new WardNotFoundException("Ward not found");
-        }
+        throw new WardNotFoundException("Ward not found");
     }
 
 }

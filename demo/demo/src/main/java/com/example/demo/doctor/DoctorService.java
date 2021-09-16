@@ -33,32 +33,24 @@ public class DoctorService {
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor ID " + doctorID + " not found"));
     }
 
-    public void deleteDoctor(Long doctorID) {
-        boolean doctorExists = false;
+    public int deleteDoctor(Long doctorID) {
         for (Doctor doctor : doctorDataAccessService.selectAllDoctors()) {
             if (doctor.getDoctorID().equals(doctorID)) {
-                doctorExists = true;
                 doctorDataAccessService.deleteDoctor(doctor);
+                return 1;
             }
         }
-        if (!doctorExists) {
-            throw new DoctorNotFoundException("Doctor ID " + doctorID + " not found");
-        }
+        throw new DoctorNotFoundException("Doctor ID " + doctorID + " not found");
     }
 
-    public void updateDoctor(Doctor doctor) {
-        boolean doctorExists = false;
+    public int updateDoctor(Doctor doctor) {
         for (Doctor doctorInDB : doctorDataAccessService.selectAllDoctors()) {
             if (doctorInDB.getDoctorID().equals(doctor.getDoctorID())) {
-                doctorExists = true;
-                doctorInDB.setSpeciality(doctor.getSpeciality());
-                doctorInDB.setFirstName(doctor.getFirstName());
-                doctorInDB.setLastName(doctor.getLastName());
-                doctorInDB.setHospital(doctor.getHospital());
+                doctorDataAccessService.deleteDoctor(doctorInDB);
+                doctorDataAccessService.insertDoctor(doctor);
+                return 1;
             }
         }
-        if (!doctorExists) {
-            throw new DoctorNotFoundException("Doctor not found");
-        }
+        throw new DoctorNotFoundException("Doctor not found");
     }
 }

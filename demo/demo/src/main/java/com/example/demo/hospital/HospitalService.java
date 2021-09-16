@@ -33,35 +33,26 @@ public class HospitalService {
                 .orElseThrow(() -> new HospitalNotFoundException("Hospital ID " + hospitalID + " not found"));
     }
 
-    public void deleteHospital(Long hospitalID) {
-        boolean hospitalExists = false;
+    public int deleteHospital(Long hospitalID) {
         for (Hospital hospital : hospitalDataAccessService.selectAllHospitals()) {
             if (hospital.getHospitalID().equals(hospitalID)) {
-                hospitalExists = true;
                 hospitalDataAccessService.deleteHospital(hospital);
+                return 1;
             }
         }
-        if (!hospitalExists) {
-            throw new HospitalNotFoundException("Hospital ID " + hospitalID + " not found");
-        }
+        throw new HospitalNotFoundException("Hospital ID " + hospitalID + " not found");
+
     }
 
-    public void updateHospital(Hospital hospital) {
-        boolean hospitalExists = false;
+    public int updateHospital(Hospital hospital) {
         for (Hospital hospitalInDB : hospitalDataAccessService.selectAllHospitals()) {
             if (hospitalInDB.getHospitalID().equals(hospital.getHospitalID())) {
-                hospitalExists = true;
-                hospitalInDB.setHospitalName(hospital.getHospitalName());
-                hospitalInDB.setStreet(hospital.getStreet());
-                hospitalInDB.setCity(hospital.getCity());
-                hospitalInDB.setState(hospital.getState());
-                hospitalInDB.setCountry(hospital.getCountry());
-                hospital.setPostalCode(hospital.getPostalCode());
+                hospitalDataAccessService.deleteHospital(hospitalInDB);
+                hospitalDataAccessService.insertHospital(hospital);
+                return 1;
             }
         }
-        if (!hospitalExists) {
-            throw new HospitalNotFoundException("Hospital not found");
-        }
+        throw new HospitalNotFoundException("Hospital not found");
     }
 
 }

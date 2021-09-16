@@ -32,10 +32,11 @@ public class WardDataAccessServicePG implements WardDAO {
         return result;
     }
 
-    public void deleteWard(Ward ward) {
+    public int deleteWard(Ward ward) {
         String deleteSql = """
                 DELETE FROM ward WHERE wardId = ?
                 """;
-        jdbcTemplate.update(deleteSql, ward.getWardId());
+        int result =  jdbcTemplate.update(deleteSql, ward.getWardId());
+        return result;
     }
 }

@@ -31,7 +31,12 @@ public class DoctorDataAccessService implements DoctorDAO {
         }
     }
 
-    public void deleteDoctor(Doctor doctor) {
-        doctorDatabase.remove(doctor);
+    public int deleteDoctor(Doctor doctor) {
+        if (doctorDatabase.contains(doctor)) {
+            doctorDatabase.remove(doctor);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

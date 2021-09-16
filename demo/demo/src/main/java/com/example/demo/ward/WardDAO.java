@@ -5,5 +5,5 @@ import java.util.List;
 public interface WardDAO {
     List<Ward> selectAllWards();
     int insertWard(Ward ward);
-    void deleteWard(Ward ward);
+    int deleteWard(Ward ward);
 }

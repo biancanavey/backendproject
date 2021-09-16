@@ -30,10 +30,11 @@ public class HospitalDataAccessServicePG implements HospitalDAO {
         return result;
     }
 
-    public void deleteHospital(Hospital hospital) {
+    public int deleteHospital(Hospital hospital) {
         String deleteSql = """
                 DELETE FROM hospital WHERE hospitalID = ?
                 """;
-        jdbcTemplate.update(deleteSql, hospital.getHospitalID());
+        int result =  jdbcTemplate.update(deleteSql, hospital.getHospitalID());
+        return result;
     }
 }

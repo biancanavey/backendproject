@@ -29,8 +29,13 @@ public class WardDataAccessService implements WardDAO {
         }
     }
 
-    public void deleteWard(Ward ward) {
-        Warddb.remove(ward);
+    public int deleteWard(Ward ward) {
+        if (Warddb.contains(ward)) {
+            Warddb.remove(ward);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
 }

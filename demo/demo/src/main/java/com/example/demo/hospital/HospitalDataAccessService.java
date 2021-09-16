@@ -30,8 +30,13 @@ public class HospitalDataAccessService implements HospitalDAO {
         }
     }
 
-    public void deleteHospital(Hospital hospital) {
-        hospitalDatabase.remove(hospital);
+    public int deleteHospital(Hospital hospital) {
+        if (hospitalDatabase.contains(hospital)) {
+            hospitalDatabase.remove(hospital);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
 

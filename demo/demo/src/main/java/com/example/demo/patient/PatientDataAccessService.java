@@ -33,7 +33,12 @@ public class PatientDataAccessService implements PatientDAO {
         }
     }
 
-    public void deletePatient(Patient patient) {
-        patientDatabase.remove(patient);
+    public int deletePatient(Patient patient) {
+        if (patientDatabase.contains(patient)) {
+            patientDatabase.remove(patient);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

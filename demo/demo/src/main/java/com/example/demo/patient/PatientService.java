@@ -3,6 +3,12 @@ package com.example.demo.patient;
 import com.example.demo.exception.PatientNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.doctor.DoctorService;
+import com.example.demo.ward.WardService;
+
+import com.example.demo.doctor.Doctor;
+import com.example.demo.ward.Ward;
+
 import java.util.List;
 
 @Service
@@ -33,42 +39,25 @@ public class PatientService {
                 .orElseThrow(() -> new PatientNotFoundException("Patient ID " + id + " not found"));
     }
 
-    public void deletePatient(Long id) {
-        boolean patientExists = false;
+    public int deletePatient(Long id) {
         for (Patient patient : patientDataAccessService.selectAllPatients()) {
             if (patient.getId().equals(id)) {
-                patientExists = true;
                 patientDataAccessService.deletePatient(patient);
+                return 1;
             }
         }
-        if (!patientExists) {
-            throw new PatientNotFoundException("Patient ID " + id + " not found");
-        }
+        throw new PatientNotFoundException("Patient ID " + id + " not found");
     }
 
-    public void updatePatient(Patient patient) {
-        boolean patientExists = false;
+    public int updatePatient(Patient patient) {
         for (Patient patientInDB : patientDataAccessService.selectAllPatients()) {
             if (patientInDB.getId().equals(patient.getId())) {
-                patientExists = true;
-                patientInDB.setFirstName(patient.getFirstName());
-                patientInDB.setLastName(patient.getLastName());
-                patientInDB.setSex(patient.getSex());
-                patientInDB.setDob(patient.getDob());
-                patientInDB.setAge(patient.getAge());
-                patientInDB.setSmoker(patient.getSmoker());
-                patientInDB.setIllness(patient.getIllness());
-                patientInDB.setWard(patient.getWard());
-                patientInDB.setDateAdmission(patient.getDateAdmission());
-                patientInDB.setDateRelease(patient.getDateRelease());
-                patientInDB.setCovidrisk(patient.getCovidrisk());
-                patientInDB.setAssessmentrisk(patient.getAssessmentrisk());
-                patientInDB.setDoctor(patient.getDoctor());
+                patientDataAccessService.deletePatient(patientInDB);
+                patientDataAccessService.insertPatient(patient);
+                return 1;
             }
         }
-        if (!patientExists) {
-            throw new PatientNotFoundException("Patient not found");
-        }
+        throw new PatientNotFoundException("Patient not found");
     }
 
 }

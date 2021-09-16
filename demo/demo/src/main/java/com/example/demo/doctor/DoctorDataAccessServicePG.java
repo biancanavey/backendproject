@@ -30,11 +30,12 @@ public class DoctorDataAccessServicePG implements DoctorDAO {
         return result;
     }
 
-    public void deleteDoctor(Doctor doctor) {
+    public int deleteDoctor(Doctor doctor) {
         String deleteSql = """
                 DELETE FROM doctor WHERE doctorID = ?
                 """;
-        jdbcTemplate.update(deleteSql, doctor.getDoctorID());
+        int result = jdbcTemplate.update(deleteSql, doctor.getDoctorID());
+        return result;
     }
 
 }

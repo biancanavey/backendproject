@@ -31,11 +31,12 @@ public class PatientDataAccessServicePG implements PatientDAO {
         return result;
     }
 
-    public void deletePatient(Patient patient) {
+    public int deletePatient(Patient patient) {
         String deleteSql = """
                 DELETE FROM patient WHERE id = ?
                 """;
-        jdbcTemplate.update(deleteSql, patient.getId());
+        int result = jdbcTemplate.update(deleteSql, patient.getId());
+        return result;
     }
 
 }

@@ -6,6 +6,6 @@ public interface DoctorDAO {
 
     List<Doctor> selectAllDoctors();
     int insertDoctor(Doctor doctor);
-    void deleteDoctor(Doctor doctor);
+    int deleteDoctor(Doctor doctor);
 
 }

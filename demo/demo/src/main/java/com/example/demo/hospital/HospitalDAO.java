@@ -6,6 +6,6 @@ public interface HospitalDAO {
 
     List<Hospital> selectAllHospitals();
     int insertHospital(Hospital hospital);
-    void deleteHospital(Hospital hospital);
+    int deleteHospital(Hospital hospital);
 
 }

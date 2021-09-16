@@ -92,14 +92,11 @@ public class WardServiceTest {
         wards.add(ward2);
 
         Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
-        Mockito.doAnswer((i) -> {
-            wards.remove(ward1);
-            return null;
-        }).when(wardDataAccessServicePG).deleteWard(ward1);
+        Mockito.when(wardDataAccessServicePG.deleteWard(ward1)).thenReturn(1);
 
-        underTest.deleteWard(1);
+        int result = underTest.deleteWard(1);
 
-        assertThat(wards).doesNotContain(ward1);
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
@@ -111,10 +108,11 @@ public class WardServiceTest {
                 ward1);
 
         Mockito.when(wardDataAccessServicePG.selectAllWards()).thenReturn(wards);
+        Mockito.when(wardDataAccessServicePG.deleteWard(ward1)).thenReturn(1);
+        Mockito.when(wardDataAccessServicePG.insertWard(ward2)).thenReturn(1);
 
-        underTest.updateWard(ward2);
+        int result = underTest.updateWard(ward2);
 
-        assertThat(ward1.getWardName()).isEqualTo("Hospital 2");
-        assertThat(ward1.getHospital()).isEqualTo(2L);
+        assertThat(result).isEqualTo(1);
     }
 }
