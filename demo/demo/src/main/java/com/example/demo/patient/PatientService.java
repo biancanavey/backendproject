@@ -3,12 +3,6 @@ package com.example.demo.patient;
 import com.example.demo.exception.PatientNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.doctor.DoctorService;
-import com.example.demo.ward.WardService;
-
-import com.example.demo.doctor.Doctor;
-import com.example.demo.ward.Ward;
-
 import java.util.List;
 
 @Service
